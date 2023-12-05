@@ -24,7 +24,7 @@ int			ft_printf(const char *format, ...);
 int			ft_putchar_p(char c);
 int			ft_puts(char *s);
 int			ft_putu(unsigned int nbr);
-int			ft_putdi(int nbr); 
+int			ft_putdi(int nbr);
 int			ft_puthex(unsigned long int nbr, char format);
 long int	ft_putptr(void *ptr);
 

@@ -1,5 +1,6 @@
 NAME_C		= client
 NAME_S		= server
+NAME		= $(NAME_C) $(NAME_S)
 CC			= cc
 FLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
@@ -12,7 +13,7 @@ OBJS_S		= $(SRC_S:.c=.o)
 %.c: %.o
 	$(CC) $(FLAGS) -c $< -o $@
 
-all: 	client server
+all: 	$(NAME)
 
 server: 	library $(OBJS_S) 
 			$(CC) $(FLAGS) -o $(NAME_S) $(OBJS_S) libft/*.o ft_printf/*.o
