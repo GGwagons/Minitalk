@@ -50,7 +50,7 @@ void	ft_recieve(int bit)
 	free(str);
 }
 
-int	main(int argc, char *argv[])
+int	main(void)
 {
 	__pid_t	pid;
 

@@ -10,10 +10,10 @@ OBJS_C		= $(SRC_C:.c=.o)
 SRC_S		= server.c
 OBJS_S		= $(SRC_S:.c=.o)
 
-%.c: %.o
+%.c:%.o
 	$(CC) $(FLAGS) -c $< -o $@
 
-all: 	$(NAME)
+all: 		$(NAME)
 
 server: 	library $(OBJS_S) 
 			$(CC) $(FLAGS) -o $(NAME_S) $(OBJS_S) libft/*.o ft_printf/*.o
@@ -30,10 +30,10 @@ clean:
 			@ make -C ft_printf/ clean
 
 fclean: 	clean
-			@ $(RM) $(NAME_S) $(NAME_C)
+			@ $(RM) $(NAME)
 			@ make -C libft/ fclean
 			@ make -C ft_printf/ fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft ft_printf/
+.PHONY: all clean fclean re libft ft_printf client server

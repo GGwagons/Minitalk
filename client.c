@@ -29,7 +29,7 @@ void	sending(int pid, unsigned char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(350);
+		usleep(420);
 	}
 }
 
@@ -40,20 +40,19 @@ int	main(int argc, char *argv[])
 	int		i;
 
 	i = 0;
-	id = ft_atoi(argv[1]);
-	if (id < 0)
-		return (0);
-	str = argv[2];
 	if (argc != 3)
 	{
 		ft_printf("Invalid input\n");
 		return (0);
 	}
+	id = ft_atoi(argv[1]);
+	if (id < 0)
+		return (0);
+	str = argv[2];
 	while (str[i])
 	{
 		sending(id, (unsigned char)str[i]);
 		i++;
 	}
-	sending(id, '\n');
 	return (0);
 }
