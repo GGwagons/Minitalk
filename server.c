@@ -6,30 +6,26 @@
 /*   By: miturk <miturk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 11:00:53 by miturk            #+#    #+#             */
-/*   Updated: 2023/12/05 12:38:26 by miturk           ###   ########.fr       */
+/*   Updated: 2023/12/07 16:03:03 by miturk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
-#define SIZE 1024
+#define SIZE 100000
 
-int	ft_error(char *str)
+void	ft_error(char *str)
 {
-	if (!str)
-	{
-		free (str);
-		return (0);
-	}
-	return (1);
+	if (str == NULL)
+		exit (1);
 }
 
 void	ft_recieve(int bit)
 {
 	static unsigned char	temp;
 	static int				i;
-	char					*str;
+	static char				*str;
 	int						j;
 
 	j = 0;
@@ -49,8 +45,9 @@ void	ft_recieve(int bit)
 	{
 		str[j] = '\0';
 		ft_putstr_fd(str, 1);
-		free(str);
+		j = 0;
 	}
+	free(str);
 }
 
 int	main(int argc, char *argv[])
