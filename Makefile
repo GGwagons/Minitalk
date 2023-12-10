@@ -2,7 +2,7 @@ NAME_C		= client
 NAME_S		= server
 NAME		= $(NAME_C) $(NAME_S)
 CC			= cc
-FLAGS		= -Wall -Werror -Wextra
+FLAGS		= -g -Wall -Werror -Wextra
 RM			= rm -f
 
 SRC_C		= client.c
@@ -10,15 +10,15 @@ OBJS_C		= $(SRC_C:.c=.o)
 SRC_S		= server.c
 OBJS_S		= $(SRC_S:.c=.o)
 
-%.c:%.o
-	$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c
+			$(CC) $(FLAGS) -c $< -o $@
 
-all: 		$(NAME)
+all: 		library $(NAME)
 
-server: 	library $(OBJS_S) 
+server: 	$(OBJS_S) 
 			$(CC) $(FLAGS) -o $(NAME_S) $(OBJS_S) libft/*.o ft_printf/*.o
 
-client: 	library $(OBJS_C) 
+client: 	$(OBJS_C) 
 			$(CC) $(FLAGS) -o $(NAME_C) $(OBJS_C) libft/*.o ft_printf/*.o
 
 library:
@@ -30,7 +30,7 @@ clean:
 			@ make -C ft_printf/ clean
 
 fclean: 	clean
-			@ $(RM) $(NAME)
+			@ $(RM) $(NAME_S) $(NAME_C)
 			@ make -C libft/ fclean
 			@ make -C ft_printf/ fclean
 
